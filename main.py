@@ -1,6 +1,8 @@
 import math
 import pygame
 
+from getDistance import getDistance
+
 pygame.init()
 
 screen = pygame.display.set_mode([800,1000]) #16x20
@@ -21,7 +23,7 @@ class Boat:
             pygame.draw.rect(self.screen,self.color,(self.startPos[0],self.startPos[1],self.rectSize[0],self.rectSize[1]))
     
 
-barco = Boat((20,20),(550,550),screen,(255,0,0))
+barco = Boat((20,20),(400,200),screen,(255,0,0))
 rectSize = 50
 rectSize2 = rectSize/4
 screenWidth = screen.get_width()
@@ -75,8 +77,12 @@ while running:
                 pygame.draw.rect(screen,(100,100,100),(500,50,rectSize/2,rectSize/2))
                 pygame.draw.circle(screen,(0,255,0),(500+rectSize/4,50+rectSize/4),20/4)
                 
-                barco.drawBoat(color = (0,255,0))
                 #pygame.display.flip()
+        
+        barco.drawBoat(color = (0,255,0))
+        font1 = pygame.font.SysFont('chalkduster.ttf',20)
+        img1 = font1.render(str(getDistance(-44-((math.sqrt(((500+rectSize/4)-(barco.atualPos[0]))**2 + ((50+rectSize/4)-(barco.atualPos[1]))**2+0.001)//20)*4.5)//6)),True,(0,0,255))
+        screen.blit(img1, (20, 50))
 
     elif(tela == 2):
         for i in range(16*4):
@@ -89,8 +95,12 @@ while running:
                 pygame.draw.rect(screen,(100,100,100),(50,400,rectSize/2,rectSize/2))
                 pygame.draw.circle(screen,(0,255,0),(50+rectSize/4,400+rectSize/4),20/4)
                 
-                barco.drawBoat(color = (0,255,0))
                 #pygame.display.flip()
+        
+        barco.drawBoat(color = (0,255,0))
+        font1 = pygame.font.SysFont('chalkduster.ttf',20)
+        img1 = font1.render(str(getDistance(-44-((math.sqrt(((50+rectSize/4)-(barco.atualPos[0]))**2 + ((400+rectSize/4)-(barco.atualPos[1]))**2+0.001)//20)*4.5)//6)),True,(0,0,255))
+        screen.blit(img1, (20, 50))
     pygame.display.flip()
 
 pygame.quit()
