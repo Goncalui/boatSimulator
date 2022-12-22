@@ -101,6 +101,7 @@ while running:
         font1 = pygame.font.SysFont('chalkduster.ttf',20)
         img1 = font1.render(str(getDistance(-44-((math.sqrt(((50+rectSize/4)-(barco.atualPos[0]))**2 + ((400+rectSize/4)-(barco.atualPos[1]))**2+0.001)//20)*4.5)//6)),True,(0,0,255))
         screen.blit(img1, (20, 50))
+    
     pygame.display.flip()
 
 pygame.quit()
